@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #E4DCCF;
+            /* background-image: url(assets/img1.png); */
+        }
+
+        .row{
+            text-transform: capitalize;
+        }
+        button[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav  style="background: #04AA6D; color: white;">
+        <h1>Weather App </h1>
+    </nav>
+    <br />
+    <br />
+    <center class="row">
+
+        <form method="post" class="col-md-6 col-md-offset-3">
+            {% csrf_token %}<!-- Cross-site requect forgery  -->
+            <div class="input-group">
+                <input type="text" class="form-control" name="city" placeholder="Enter City...">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+            <form>
+
+    </center>
+    <div class="row">
+        {% if country_code and icon and temp and pressure and humidity %}
+        <div class="col-md-6 col-md-offset-3">
+            <h3>City : {{city}}</h3>
+            <h4>Country code : {{country_code}}</h4>
+            <!-- <h5>Date : {{date}}</h5> -->
+            <h5>Status : <b>{{description}}</b><img src='http://openweathermap.org/img/w/{{icon}}.png' width="60px"></h5>
+            <h5>Temperature : {{temp}}</h5>
+            <h5>Pressure : {{pressure}} </h5>
+            <h5>Humidity : {{humidity}}</h5>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
