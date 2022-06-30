@@ -24,7 +24,6 @@ def index(request):
             "description": str(list_of_data['weather'][0]['description']),
             "icon": str(list_of_data['weather'][0]['icon']),
             "clouds": str(list_of_data['clouds']['all'])+'%',
-            # "date": str(list_of_data['dt']),
         }
         print(data)
     else:
